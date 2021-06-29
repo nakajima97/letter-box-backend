@@ -1,4 +1,8 @@
-class StoresController < ApplicationController
+class Api::V1::StoresController < ApplicationController
+  def index
+    render json: {data: "aaa"}
+  end
+
   def search
     stores = Store.search(params[:keyword])
     if stores
