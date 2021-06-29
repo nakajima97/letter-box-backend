@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "Stores", type: :request do
   describe "/stores/:keyword" do
-    it "keyword test" do
-      get '/api/v1/stores/aaa'
+    it "success" do
+      get '/api/v1/stores/search?keyword=aaa'
       assert_response_schema_confirm(200)
     end
   end
