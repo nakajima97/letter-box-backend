@@ -68,16 +68,16 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   # Open API setting
-  # open_api = OpenAPIParser.parse(YAML.load_file("#{Rails.root}/doc/letter-box-api/reference/letter-box-api.yaml"))
-  # schema = Committee::Drivers::OpenAPI3::Driver.new.parse(open_api)
-  # config.add_setting :committee_options
-  # config.committee_options = { schema: schema }
+  include Committee::Rails::Test::Methods
+
   yaml_path = "#{Rails.root}/doc/letter-box-api/reference/letter-box-api.yaml"
   config.add_setting :committee_options
   config.committee_options = {
     schema_path: Rails.root.join('schema', yaml_path).to_s,
     query_hash_key: 'rack.request.query_hash',
     parse_response_by_content_type: false,
-    prefix: '/api/v1'
+    # prefixでやるとActionController::RoutingError:No route matches [GET] "/stores"になる
+    # めんどくさいけど、各pathで書いていく
+    # prefix: "/api/v1"
   }
 end
