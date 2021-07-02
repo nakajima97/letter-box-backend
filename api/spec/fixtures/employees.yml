@@ -1,0 +1,11 @@
+one:
+  id: 1
+  first_name: "sample"
+  last_name: "foo"
+  store_id: 1
+
+two:
+  id: 2
+  first_name: "foo"
+  last_name: "bar"
+  store_id: 1
