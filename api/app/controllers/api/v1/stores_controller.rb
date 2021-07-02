@@ -4,7 +4,7 @@ class Api::V1::StoresController < ApplicationController
     if stores
       render json: {data: stores}
     else
-      render json: {message: "no data"}
+      render status: 400, json: {message: "no data"}
     end
   end
 end
