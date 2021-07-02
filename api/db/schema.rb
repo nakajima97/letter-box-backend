@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_30_012306) do
+ActiveRecord::Schema.define(version: 2021_06_30_072637) do
 
   create_table "employees", charset: "utf8mb4", force: :cascade do |t|
     t.string "first_name"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2021_06_30_012306) do
     t.index ["store_id"], name: "index_employees_on_store_id"
   end
 
+  create_table "messages", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "store_id", null: false
+    t.bigint "employee_id", null: false
+    t.text "message_text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_messages_on_employee_id"
+    t.index ["store_id"], name: "index_messages_on_store_id"
+  end
+
   create_table "stores", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -28,4 +38,6 @@ ActiveRecord::Schema.define(version: 2021_06_30_012306) do
   end
 
   add_foreign_key "employees", "stores"
+  add_foreign_key "messages", "employees"
+  add_foreign_key "messages", "stores"
 end
