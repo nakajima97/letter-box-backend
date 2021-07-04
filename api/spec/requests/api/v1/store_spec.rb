@@ -1,6 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe "Stores", type: :request do
+  describe "index" do
+    it "normal" do
+      get '/api/v1/stores'
+      assert_response_schema_confirm(200)
+      res = JSON.parse(response.body)
+      expect(res['data']).to eq([{"id"=>1, "name"=>"サンプル株式会社"}, {"id"=>2, "name"=>"株式会社初期値"}])
+    end
+
+    it "count set" do
+      get '/api/v1/stores?count=1'
+      assert_response_schema_confirm(200)
+      res = JSON.parse(response.body)
+      expect(res['data']).to eq([{"id"=>1, "name"=>"サンプル株式会社"}])
+    end
+  end
+  
+
   describe "/stores/:keyword" do
     fixtures :stores
 
