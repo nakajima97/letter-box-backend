@@ -9,7 +9,7 @@ RSpec.describe "Api::V1::Employees", type: :request do
       assert_response_schema_confirm(200)
       res = JSON.parse(response.body)
       expect(res['employees']).to eq([{"first_name"=>"sample", "id"=>1, "last_name"=>"foo"}, {"first_name"=>"foo", "id"=>2, "last_name"=>"bar"}])
-      expect(res['store_id']).to eq("1")
+      expect(res['store_id']).to eq(1)
     end
 
     it "no store_id" do
