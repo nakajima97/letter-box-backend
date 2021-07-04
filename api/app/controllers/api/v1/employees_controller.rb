@@ -9,12 +9,12 @@ class Api::V1::EmployeesController < ApplicationController
 
     if employees && employees.size > 0
       render json: {
-        store_id: store_id,
+        store_id: store_id.to_i,
         employees: employees
       }
     else
       render status: 200, json: {
-        store_id: store_id,
+        store_id: store_id.to_i,
         message: "No data"
       }
     end
