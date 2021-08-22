@@ -17,7 +17,7 @@ class Api::V1::StoresController < ApplicationController
     unless keyword
       return render status: 400, json: {message: "The keyword is not entered."}
     end
-    stores = Store.search(keyword)
+    stores = Store.where("name LIKE ?", "%#{keyword}%").select(:id, :name)
 
     if stores && stores.size > 0
       render json: { data: stores }

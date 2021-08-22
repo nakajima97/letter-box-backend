@@ -5,7 +5,7 @@ class Api::V1::EmployeesController < ApplicationController
       return render status: 400, json: { message: "The store_id is not entered." }
     end
 
-    employees = Employee.search(store_id)
+    employees = Employee.where(store_id: store_id).select(:id, :first_name, :last_name)
 
     if employees && employees.size > 0
       render json: {
