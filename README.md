@@ -11,7 +11,7 @@ LetteBoxで用いる他のリポジトリは以下の通り。
 ### 客側クライアント
 https://github.com/yudai-nakajima/letter-box-frontend-client
 ### 管理画面
-未開発
+https://github.com/yudai-nakajima/letter-box-client-management
 ### API仕様書
 https://github.com/yudai-nakajima/letter-box-api
 
@@ -30,3 +30,17 @@ https://github.com/yudai-nakajima/letter-box-api
 
 # 機能一覧
 - メッセージ送信機能
+
+# セットアップ
+開発環境構築に`docker-compose`を用いているため以下コードで動作環境は揃う
+```bash
+$ docker-compose build
+$ docker-compose up
+```
+
+その後、`backend_api_1`に接続して、以下コマンドを実行する
+```bash
+$ rails db:create
+$ rails db:migrate
+$ rails db:seed
+```
