@@ -40,11 +40,11 @@ end
   )
 end
 
-# 株式会社初期値の従業員番号1に対するメッセージを追加
+# 株式会社初期値の従業員番号31に対するメッセージを追加
 10.times do |n|
   Message.create!(
     store_id: 2,
-    employee_id: 1,
+    employee_id: 31,
     message_text: Faker::Lorem.sentence
   )
 end
