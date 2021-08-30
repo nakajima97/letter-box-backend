@@ -1,16 +1,17 @@
 class Api::V1::MessagesController < ApplicationController
   def index
     employee_id_from_param = params[:employee_id]
-    logger.debug('デバッグ仕込んだよ')
-    logger.debug(@employee_id_from_param)
     if employee_id_from_param
       messages = Message.where(employee_id: employee_id_from_param)
-      render status: 200, json: { data: messages }
     else
       messages = Message.all
-      render status: 200, json: { data: messages }
     end
-    
+
+    if messages.count == 0
+      render status: 200, json: { message: "No data" }
+    else
+      render status: 200, json: { message: "success", data: messages }
+    end
   end
 
   def create
