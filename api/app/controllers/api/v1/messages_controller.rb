@@ -1,4 +1,9 @@
 class Api::V1::MessagesController < ApplicationController
+  def index
+    messages = Message.all
+    render status: 200, json: { data: messages }
+  end
+
   def create
     @message = Message.new(message_params)
     if @message.save
