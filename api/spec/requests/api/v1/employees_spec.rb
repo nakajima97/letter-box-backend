@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Api::V1::Employees", type: :request do
-  describe "employees search from store_id" do
+  describe "GET /api/v1/employees" do
     fixtures :employees
 
     it "success" do

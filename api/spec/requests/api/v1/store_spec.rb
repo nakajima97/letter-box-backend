@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Stores", type: :request do
-  describe "index" do
+  describe "GET /api/v1/stores" do
     it "normal" do
       get '/api/v1/stores'
       assert_response_schema_confirm(200)
@@ -18,7 +18,7 @@ RSpec.describe "Stores", type: :request do
   end
   
 
-  describe "/stores/:keyword" do
+  describe "GET /api/v1/stores/:keyword" do
     fixtures :stores
 
     it "success" do

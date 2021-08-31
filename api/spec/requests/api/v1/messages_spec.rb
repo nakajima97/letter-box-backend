@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Api::V1::Messages", type: :request do
-  describe "get message" do
+  describe "GET /api/v1/messages" do
     it "メッセージ一覧を取得" do
       get '/api/v1/messages'
       assert_response_schema_confirm(200)
@@ -13,7 +13,7 @@ RSpec.describe "Api::V1::Messages", type: :request do
     end
   end
 
-  describe "create messge" do
+  describe "POST /api/v1/messages" do
     it "success" do
       post '/api/v1/messages', params: { store_id: 1, employee_id:1, message_text: "test" }
       assert_response_schema_confirm(201)
