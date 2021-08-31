@@ -10,16 +10,16 @@ class Api::V1::MessagesController < ApplicationController
     if messages.count == 0
       render status: 200, json: { message: "No data" }
     else
-      render status: 200, json: { message: "success", data: messages }
+      render status: 200, json: { message: "Success", data: messages }
     end
   end
 
   def create
     @message = Message.new(post_message_params)
     if @message.save
-      render status: 201, json: { message: "success" }
+      render status: 201, json: { message: "Success" }
     else
-      render status: 400, json: { message: "failure" }
+      render status: 400, json: { message: "Failure" }
     end
   end
 
