@@ -76,8 +76,5 @@ RSpec.configure do |config|
     schema_path: Rails.root.join('schema', yaml_path).to_s,
     query_hash_key: 'rack.request.query_hash',
     parse_response_by_content_type: false,
-    # prefixでやるとActionController::RoutingError:No route matches [GET] "/stores"になる
-    # めんどくさいけど、各pathで書いていく
-    # prefix: "/api/v1"
   }
 end
