@@ -67,7 +67,7 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  # Open API setting
+  # committee setting
   include Committee::Rails::Test::Methods
 
   yaml_path = "#{Rails.root}/doc/letter-box-api/reference/letter-box-api.yaml"
