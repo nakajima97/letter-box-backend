@@ -26,7 +26,7 @@ jobs:
     - name: Run RSpec
       shell: bash
       run:  |
-        docker-compose run api /bin/bash -c "ls -a"
+        docker-compose run api ls -a
         docker-compose run api bundle exec rspec
       env:
         RAILS_ENV: test
