@@ -19,6 +19,7 @@ jobs:
         docker-compose build
         # データベースの作成
         # docker-compose run api rails db:create
+        docker-compose run api cd ~/myapp
         docker-compose run api ls -a
       env:
         RAILS_ENV: test
