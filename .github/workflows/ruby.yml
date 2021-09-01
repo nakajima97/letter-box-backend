@@ -4,30 +4,29 @@ on: [push]
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup docker
-      shell: bash
-      run: |
-        # # 必要なアップデート
-        # docker-compose run api yarn install --check-files
-        # docker-compose run api yarn upgrade
-        # イメージのビルド
-        docker-compose build
-        # データベースの作成
-        docker-compose run api /bin/bash -c "cd ../myapp && rails db:create && rails db:migrate"
-        # docker-compose run api rails db:create
-        # docker-compose run api rails db:migrate
-      env:
-        RAILS_ENV: test
+      - uses: actions/checkout@v2
+      - name: Setup docker
+        shell: bash
+        run: |
+          # # 必要なアップデート
+          # docker-compose run api yarn install --check-files
+          # docker-compose run api yarn upgrade
+          # イメージのビルド
+          docker-compose build
+          # データベースの作成
+          docker-compose run api /bin/bash -c "cd ../myapp && rails db:create --trace && rails db:migrate"
+          # docker-compose run api rails db:create
+          # docker-compose run api rails db:migrate
+        env:
+          RAILS_ENV: test
 
-    - name: Run RSpec
-      shell: bash
-      run:  |
-        docker-compose run api /bin/bash -c "cd ../myapp && bundle exec rspec"
-        # docker-compose run api bundle exec rspec
-      env:
-        RAILS_ENV: test
+      - name: Run RSpec
+        shell: bash
+        run: |
+          docker-compose run api /bin/bash -c "cd ../myapp && bundle exec rspec"
+          # docker-compose run api bundle exec rspec
+        env:
+          RAILS_ENV: test

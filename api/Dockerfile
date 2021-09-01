@@ -7,7 +7,7 @@ apt-get update && apt-get install yarn
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
-ADD . /myapp
+COPY . /myapp
 RUN bundle install
 
 # Add a script to be executed every time the container starts.
