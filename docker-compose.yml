@@ -11,7 +11,7 @@ services:
       - ./db/tmp/db:/var/lib/mysql
   api:
     build: ./api/
-    command: bash -c "rm -f tmp/pids/server.pid"
+    command: bash -c "cd ~/../myapp && rails s -b 0.0.0.0"
     volumes:
       - ./api:/api
     ports:
