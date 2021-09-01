@@ -24,10 +24,10 @@ jobs:
       env:
         RAILS_ENV: test
 
-    # - name: Run RSpec
-    #   shell: bash
-    #   run:  |
-    #     docker-compose run api /bin/bash -c "cd ../myapp && ls -a"
-    #     docker-compose exec api bundle exec rspec
-    #   env:
-    #     RAILS_ENV: test
+    - name: Run RSpec
+      shell: bash
+      run:  |
+        docker-compose run api /bin/bash -c "cd ../myapp"
+        docker-compose run api bundle exec rspec
+      env:
+        RAILS_ENV: test
