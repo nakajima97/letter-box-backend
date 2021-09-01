@@ -18,8 +18,8 @@ jobs:
         # イメージのビルド
         docker-compose build
         # データベースの作成
-        # docker-compose run api rails db:create
         docker-compose run api /bin/bash -c "cd ../"
+        docker-compose exec api rails db:create
       env:
         RAILS_ENV: test
 
@@ -27,6 +27,6 @@ jobs:
       shell: bash
       run:  |
         docker-compose run api /bin/bash -c "cd ../ && ls -a"
-        # docker-compose run api bundle exec rspec
+        docker-compose exec api bundle exec rspec
       env:
         RAILS_ENV: test
