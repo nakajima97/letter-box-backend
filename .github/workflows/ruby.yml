@@ -28,6 +28,6 @@ jobs:
       shell: bash
       run:  |
         docker-compose run api /bin/bash -c "cd ../myapp"
-        docker-compose run api rspec
+        docker-compose run api bundle exec rspec
       env:
         RAILS_ENV: test
