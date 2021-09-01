@@ -11,9 +11,13 @@ services:
       - ./db/tmp/db:/var/lib/mysql
   api:
     build: ./api/
-    command: bash -c "rm -f tmp/pids/server.pid && cd ~/../myapp && rails s -p 3000 -b 0.0.0.0"
+    command: bash -c "rm -f tmp/pids/server.pid"
     volumes:
       - ./api:/api
     ports:
       - "3000:3000"
     stdin_open: true
+    environment:
+      # waitするホストを指定する．
+      # 複数のwait_hostを指定することもできます．(MySQLだけでなくRedisの起動を待ちたい時なども便利です．)
+      WAIT_HOSTS: db:3306
