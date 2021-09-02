@@ -16,7 +16,7 @@ jobs:
           # docker-compose run api yarn upgrade
           # イメージのビルド
           docker-compose build
-          docker-compose up
+          docker-compose up -d
           # データベースの作成
           docker-compose exec api /bin/bash -c "cd ~/../myapp && rails db:create"
         env:
