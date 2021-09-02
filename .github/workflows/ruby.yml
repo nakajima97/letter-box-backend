@@ -11,21 +11,18 @@ jobs:
       - name: Setup docker
         shell: bash
         run: |
-          # # 必要なアップデート
-          # docker-compose run api yarn install --check-files
-          # docker-compose run api yarn upgrade
           # イメージのビルド
           docker-compose build
           docker-compose up -d
-          # データベースの作成
-          # docker-compose exec -T api /bin/bash -c "cd ~/../myapp && rails db:create"
         env:
           RAILS_ENV: test
 
       - name: DB Create
         shell: bash
         run: |
-          docker container ls
+          # ここで失敗する
+          # Mysql2::Error::ConnectionError: Can't connect to MySQL server on 'db' (115)
+          # ローカルのubutnuでは成功するので謎
           docker-compose exec -T api rails db:create
 
       # - name: Run RSpec

@@ -16,12 +16,6 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
-# API仕様書をclone
-WORKDIR /myapp/api
-RUN mkdir doc
-WORKDIR /myapp/doc
-RUN git clone https://github.com/yudai-nakajima/letter-box-api.git
-
 # ufoscout/docker-compose-wait を入れてDBが起動するのを待つ
 ARG ARG_COMPOSE_WAIT_VER=2.7.3
 RUN curl -SL https://github.com/ufoscout/docker-compose-wait/releases/download/${ARG_COMPOSE_WAIT_VER}/wait -o /wait
