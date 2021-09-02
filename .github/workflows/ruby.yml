@@ -27,7 +27,7 @@ jobs:
         run: |
           docker container ls
           docker-compose exec -T api /bin/bash -c "cd ~/../myapp && ls -a"
-          docker-compose exec -T api ls
+          docker-compose exec -T api ls -a
 
       # - name: Run RSpec
       #   shell: bash
