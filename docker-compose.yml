@@ -9,6 +9,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     volumes:
       - ./db/tmp/db:/var/lib/mysql
+    container_name: db
   api:
     build: ./api/
     command: bash -c "cd ~/../myapp && rails s -b 0.0.0.0"
@@ -21,3 +22,4 @@ services:
       # waitするホストを指定する．
       # 複数のwait_hostを指定することもできます．(MySQLだけでなくRedisの起動を待ちたい時なども便利です．)
       WAIT_HOSTS: db:3306
+    container_name: api
