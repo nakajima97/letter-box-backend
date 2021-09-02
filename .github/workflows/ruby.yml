@@ -18,7 +18,7 @@ jobs:
           docker-compose build
           docker-compose up -d
           # データベースの作成
-          docker-compose exec api /bin/bash -c "cd ~/../myapp && rails db:create"
+          docker-compose exec -T api /bin/bash -c "cd ~/../myapp && rails db:create"
         env:
           RAILS_ENV: test
 
