@@ -48,3 +48,7 @@ $ mkdir doc
 $ cd doc
 $ git clone https://github.com/yudai-nakajima/letter-box-api.git
 ```
+4. Gemをインストールする
+```bash
+$ bandle install
+```
