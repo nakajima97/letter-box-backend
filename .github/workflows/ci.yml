@@ -15,24 +15,21 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # - name: setup
-      #   run: |
-      #     apt-get update -qq && apt-get install -y nodejs mariadb-client && \
-      #     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-      #     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-      #     apt-get update && apt-get install yarn
+      - name: Setup
+        run: |
+          apt-get update -qq && apt-get install -y nodejs mariadb-client && \
+          curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+          echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+          apt-get update && apt-get install yarn
       
-      - name: chrone API Blueprint
+      - name: Clone API specification
         run: cd ./api && mkdir doc && cd doc && git clone https://github.com/yudai-nakajima/letter-box-api.git
 
-      - name: check
-        run: cd ./api/doc/ && ls -a
+      - name: Rub bundle install
+        run: cd ./api && bundle install
 
-      # - name: bundle install
-      #   run: cd ./api && bundle install
+      - name: DB setup
+        run: cd ./api && rails db:create && rails db:migrate
 
-      # - name: DB setup
-      #   run: cd ./api && rails db:create && rails db:migrate
-
-      # - name: rspec
-      #   run: cd ./api && rspec
+      - name: Run rspec
+        run: cd ./api && rspec
