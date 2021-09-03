@@ -22,7 +22,7 @@ jobs:
           apt-get update && apt-get install yarn
       
       - name: bundle install
-        run: cd ./api &&bundle install
+        run: cd ./api && bundle install
 
       - name: DB setup
-        run: rails db:create && rails db:migrate
+        run: cd ./api && rails db:create && rails db:migrate
