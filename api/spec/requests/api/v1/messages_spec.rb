@@ -18,6 +18,8 @@ RSpec.describe "Api::V1::Messages", type: :request do
   describe "POST /api/v1/messages" do
     it "メッセージの投稿に成功する" do
       post '/api/v1/messages', params: { store_id: 1, employee_id:1, message_text: "test" }
+      # github actionsでrspecを動かすとここで400が返ってきてrspecが失敗する
+      # 本当は201が返ってくる
       assert_response_schema_confirm
     end
 
