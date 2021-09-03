@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "Stores", type: :request do
   describe "index" do
+    fixtures :stores    
+    
     it "normal" do
       get '/api/v1/stores'
       assert_response_schema_confirm(200)
