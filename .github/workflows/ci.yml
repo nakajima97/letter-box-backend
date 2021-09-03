@@ -2,14 +2,15 @@ name: no docker-compose
 on: [push]
 
 jobs:
-  runs-on: ubuntu-latest
-  services:
-    db:
-      image: mariadb:10.6.2
-      env:
-        MYSQL_USER: root
-        MYSQL_ROOT_PASSWORD: password
-  container:
-    image: './api/Dockerfile'
-  steps:
-    - uses: actions/checkout@v2
+  test: 
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: mariadb:10.6.2
+        env:
+          MYSQL_USER: root
+          MYSQL_ROOT_PASSWORD: password
+    container:
+      image: './api/Dockerfile'
+    steps:
+      - uses: actions/checkout@v2
