@@ -29,15 +29,22 @@ https://github.com/yudai-nakajima/letter-box-api
 - メッセージ送信機能
 
 # セットアップ
-開発環境構築に`docker-compose`を用いているため以下コードで動作環境は揃う
+1. 開発環境構築に`docker-compose`を用いているため以下コードで動作環境は揃う
 ```bash
 $ docker-compose build
 $ docker-compose up
 ```
 
-その後、`backend_api_1`に接続して、以下コマンドを実行する
+2. `backend_api_1`に接続して、DBを作成する
 ```bash
 $ rails db:create
 $ rails db:migrate
 $ rails db:seed
+```
+3. `backend_api_1`に接続して、別リポジトリで管理しているAPI仕様書をcloneする  
+※rspecを実行する際に使用するので、アプリを動かすだけならこの作業は飛ばしても問題ない
+```bash
+$ mkdir doc 
+$ cd doc
+$ git clone https://github.com/yudai-nakajima/letter-box-api.git
 ```
