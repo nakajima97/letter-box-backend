@@ -26,3 +26,6 @@ jobs:
 
       - name: DB setup
         run: cd ./api && rails db:create && rails db:migrate
+
+      - name: rspec
+        run: cd ./api && rspec
