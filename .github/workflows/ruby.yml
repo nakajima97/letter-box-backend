@@ -14,9 +14,11 @@ jobs:
           # イメージのビルド
           docker-compose build
           # docker-compose up -d
-          docker-compose run --rm wait-middleware
         env:
           RAILS_ENV: test
+
+      - name: Wait middleware services
+        run: docker-compose run --rm wait-middleware
 
       - name: DB Create
         shell: bash
