@@ -26,7 +26,8 @@ https://github.com/yudai-nakajima/letter-box-api
 - Ruby on Rails
 
 # 機能一覧
-- メッセージ送信機能
+- メッセージ送信
+- 店舗一覧
 
 # セットアップ
 1. 開発環境構築に`docker-compose`を用いているため以下コードで動作環境は揃う
