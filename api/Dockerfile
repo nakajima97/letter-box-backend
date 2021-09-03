@@ -7,7 +7,7 @@ apt-get update && apt-get install yarn
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
-ADD . /myapp
+COPY . /myapp
 RUN bundle install
 
 # Add a script to be executed every time the container starts.
@@ -16,8 +16,9 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
-# API仕様書をclone
-WORKDIR /api
-RUN mkdir doc
-WORKDIR /doc
-RUN git clone https://github.com/yudai-nakajima/letter-box-api.git
+# ufoscout/docker-compose-wait を入れてDBが起動するのを待つ
+ARG ARG_COMPOSE_WAIT_VER=2.7.3
+RUN curl -SL https://github.com/ufoscout/docker-compose-wait/releases/download/${ARG_COMPOSE_WAIT_VER}/wait -o /wait
+RUN chmod +x /wait
+
+WORKDIR /myapp

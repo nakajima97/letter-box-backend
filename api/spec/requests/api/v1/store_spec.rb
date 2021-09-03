@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Stores", type: :request do
   describe "GET /api/v1/stores" do
-    it "店舗一覧を取得する" do
+    fixtures :stores 
+
+    it "店舗一覧を取得する" do    
       get '/api/v1/stores'
       assert_response_schema_confirm(200)
       res = JSON.parse(response.body)
@@ -19,6 +21,8 @@ RSpec.describe "Stores", type: :request do
   
 
   describe "GET /api/v1/stores/:keyword" do
+    fixtures :stores 
+    
     it "店舗名に指定したキーワードが含まれている店舗だけを取得する" do
       get '/api/v1/stores/search?keyword=%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB'
       assert_response_schema_confirm(200)
