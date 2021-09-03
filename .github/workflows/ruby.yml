@@ -13,7 +13,8 @@ jobs:
         run: |
           # イメージのビルド
           docker-compose build
-          docker-compose up -d
+          # docker-compose up -d
+          docker-compose run --rm wait-middleware
         env:
           RAILS_ENV: test
 
@@ -23,7 +24,7 @@ jobs:
           # ここで失敗する
           # Mysql2::Error::ConnectionError: Can't connect to MySQL server on 'db' (115)
           # ローカルのubutnuでは成功するので謎
-          docker-compose exec -T api rails db:create
+          docker-compose run api rails db:create
 
       # - name: Run RSpec
       #   shell: bash
