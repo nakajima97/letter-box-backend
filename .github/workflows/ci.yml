@@ -23,7 +23,7 @@ jobs:
       #     apt-get update && apt-get install yarn
       
       - name: chrone API Blueprint
-        run: cd ./api && mkdir doc && cd doc && git chrone https://github.com/yudai-nakajima/letter-box-api.git
+        run: cd ./api && mkdir doc && cd doc && git clone https://github.com/yudai-nakajima/letter-box-api.git
 
       - name: check
         run: cd ./api/doc/ && ls -a
