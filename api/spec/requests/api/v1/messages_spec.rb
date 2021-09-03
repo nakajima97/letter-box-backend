@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Api::V1::Messages", type: :request do
+  fixtures :messages
+
   describe "GET /api/v1/messages" do
     it "メッセージ一覧を取得する" do
       get '/api/v1/messages'

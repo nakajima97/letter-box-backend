@@ -1,0 +1,19 @@
+one:
+  store_id: 1,
+  employee_id: 1,
+  message_text: "sample message 1"
+
+two:
+  store_id: 1,
+  employee_id: 1,
+  message_text: "sample message 2"
+
+three:
+  store_id: 1,
+  employee_id: 1,
+  message_text: "sample message 3"
+
+four:
+  store_id: 1,
+  employee_id: 1,
+  message_text: "sample message 4"

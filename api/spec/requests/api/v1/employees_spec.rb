@@ -26,5 +26,4 @@ RSpec.describe "Api::V1::Employees", type: :request do
       expect(res['message']).to eq("No data")
     end
   end
-  
 end
