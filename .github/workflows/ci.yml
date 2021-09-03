@@ -23,3 +23,6 @@ jobs:
       
       - name: bundle install
         run: cd ./api &&bundle install
+
+      - name: DB setup
+        run: rails db:create && rails db:migrate
