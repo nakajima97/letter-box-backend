@@ -24,6 +24,8 @@ https://github.com/yudai-nakajima/letter-box-api
 - Docker-Compose
 - Ruby
 - Ruby on Rails
+- Github Actions
+  - push時にrspecによる検証 
 
 # 機能一覧
 - メッセージ送信
