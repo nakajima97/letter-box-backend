@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_14_030627) do
+ActiveRecord::Schema.define(version: 2021_09_14_050117) do
 
   create_table "employee_auths", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2021_09_14_030627) do
     t.bigint "store_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "employee_auth_id"
+    t.index ["employee_auth_id"], name: "index_employees_on_employee_auth_id"
     t.index ["store_id"], name: "index_employees_on_store_id"
   end
 
@@ -51,6 +53,7 @@ ActiveRecord::Schema.define(version: 2021_09_14_030627) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "employees", "employee_auths"
   add_foreign_key "employees", "stores"
   add_foreign_key "messages", "employees"
   add_foreign_key "messages", "stores"
