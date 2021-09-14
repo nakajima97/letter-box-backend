@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :employee_auths, path: 'api/v1/employee', 
+    path_names: {
+      sign_in: 'login',
+      sign_out: 'logout',
+      registrations: 'registrations'
+    },
+    controllers: {
+      sessions: 'api/v1/employee_auths/sessions',
+      registrations: 'api/v1/employee_auths/registrations'
+    }
   namespace 'api' do
     namespace 'v1' do
       get 'stores', to: 'stores#index'
