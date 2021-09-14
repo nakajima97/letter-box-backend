@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_14_050117) do
+ActiveRecord::Schema.define(version: 2021_09_14_054525) do
 
   create_table "employee_auths", charset: "utf8mb4", force: :cascade do |t|
-    t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -21,7 +20,8 @@ ActiveRecord::Schema.define(version: 2021_09_14_050117) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "jti", null: false
-    t.index ["email"], name: "index_employee_auths_on_email", unique: true
+    t.string "employee_login_id", null: false
+    t.index ["employee_login_id"], name: "index_employee_auths_on_employee_login_id", unique: true
     t.index ["jti"], name: "index_employee_auths_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_employee_auths_on_reset_password_token", unique: true
   end
