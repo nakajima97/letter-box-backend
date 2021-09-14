@@ -5,8 +5,6 @@ class EmployeeAuth < ApplicationRecord
           :jwt_authenticatable,
           :registerable,
           jwt_revocation_strategy: self
-        
-
 
   has_one :employee
 end
