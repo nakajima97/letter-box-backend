@@ -29,6 +29,7 @@ jobs:
         run: cd ./api && bundle install
 
       - name: DB setup
+        run: cd ./api/config && ls -a
         run: cd ./api && rails db:create && rails db:migrate
 
       - name: Run rspec
