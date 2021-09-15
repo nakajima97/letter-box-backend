@@ -28,8 +28,10 @@ jobs:
       - name: Rub bundle install
         run: cd ./api && bundle install
 
-      - name: DB setup
+      - name: Search
         run: cd ./api/config && ls -a
+
+      - name: DB setup
         run: cd ./api && rails db:create && rails db:migrate
 
       - name: Run rspec
