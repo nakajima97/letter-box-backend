@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_16_055504) do
+ActiveRecord::Schema.define(version: 2021_09_16_060256) do
 
   create_table "employee_auths", charset: "utf8mb4", force: :cascade do |t|
     t.string "encrypted_password", default: "", null: false
@@ -65,10 +65,13 @@ ActiveRecord::Schema.define(version: 2021_09_16_055504) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "store_auth_id"
+    t.index ["store_auth_id"], name: "index_stores_on_store_auth_id"
   end
 
   add_foreign_key "employees", "employee_auths"
   add_foreign_key "employees", "stores"
   add_foreign_key "messages", "employees"
   add_foreign_key "messages", "stores"
+  add_foreign_key "stores", "store_auths"
 end

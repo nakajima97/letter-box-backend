@@ -12,6 +12,8 @@ class Api::V1::StoreAuths::RegistrationsController < Devise::RegistrationsContro
   # POST /resource
   def create
     super
+    name = params[:store][:name]
+    @store_auth.build_store(name: name).save
   end
 
   # GET /resource/edit
