@@ -42,7 +42,7 @@ class Api::V1::StoreAuths::RegistrationsController < Devise::RegistrationsContro
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:store_login_id, store_attribute: [:name]])
   end
 
   # If you have extra params to permit, append them to the sanitizer.

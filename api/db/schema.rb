@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_16_053314) do
+ActiveRecord::Schema.define(version: 2021_09_16_055504) do
 
   create_table "employee_auths", charset: "utf8mb4", force: :cascade do |t|
     t.string "encrypted_password", default: "", null: false
@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 2021_09_16_053314) do
   end
 
   create_table "store_auths", charset: "utf8mb4", force: :cascade do |t|
-    t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -56,9 +55,10 @@ ActiveRecord::Schema.define(version: 2021_09_16_053314) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "jti", null: false
-    t.index ["email"], name: "index_store_auths_on_email", unique: true
+    t.string "store_login_id", null: false
     t.index ["jti"], name: "index_store_auths_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_store_auths_on_reset_password_token", unique: true
+    t.index ["store_login_id"], name: "index_store_auths_on_store_login_id", unique: true
   end
 
   create_table "stores", charset: "utf8mb4", force: :cascade do |t|

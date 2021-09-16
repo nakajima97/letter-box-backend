@@ -5,4 +5,6 @@ class StoreAuth < ApplicationRecord
           :jwt_authenticatable,
           :registerable,
           jwt_revocation_strategy: self
+
+  
 end
