@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_14_054525) do
+ActiveRecord::Schema.define(version: 2021_09_16_060256) do
 
   create_table "employee_auths", charset: "utf8mb4", force: :cascade do |t|
     t.string "encrypted_password", default: "", null: false
@@ -47,14 +47,31 @@ ActiveRecord::Schema.define(version: 2021_09_14_054525) do
     t.index ["store_id"], name: "index_messages_on_store_id"
   end
 
+  create_table "store_auths", charset: "utf8mb4", force: :cascade do |t|
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "jti", null: false
+    t.string "store_login_id", null: false
+    t.index ["jti"], name: "index_store_auths_on_jti", unique: true
+    t.index ["reset_password_token"], name: "index_store_auths_on_reset_password_token", unique: true
+    t.index ["store_login_id"], name: "index_store_auths_on_store_login_id", unique: true
+  end
+
   create_table "stores", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "store_auth_id"
+    t.index ["store_auth_id"], name: "index_stores_on_store_auth_id"
   end
 
   add_foreign_key "employees", "employee_auths"
   add_foreign_key "employees", "stores"
   add_foreign_key "messages", "employees"
   add_foreign_key "messages", "stores"
+  add_foreign_key "stores", "store_auths"
 end

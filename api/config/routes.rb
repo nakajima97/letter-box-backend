@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :store_auths, path: 'api/v1/store', 
+    path_names: {
+      sign_in: 'login',
+      sign_out: 'logout',
+      registrations: 'registrations'
+    },
+    controllers: {
+      sessions: 'api/v1/store_auths/sessions',
+      registrations: 'api/v1/store_auths/registrations'
+    }
   devise_for :employee_auths, path: 'api/v1/employee', 
     path_names: {
       sign_in: 'login',
