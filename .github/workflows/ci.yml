@@ -4,6 +4,9 @@ on: [push]
 jobs:
   test: 
     runs-on: ubuntu-latest
+    env:
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MATER_KEY }}
+      RAILS_ENV: test
     services:
       db:
         image: mariadb:10.6.2
