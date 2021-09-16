@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :store_auths
   devise_for :employee_auths, path: 'api/v1/employee', 
     path_names: {
       sign_in: 'login',
