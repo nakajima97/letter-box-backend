@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       get 'employees/search', to: 'employees#search'
       get 'messages', to: 'messages#index'
       post 'messages', to: 'messages#create'
+      get 'check', to: 'log_in_state#check'
     end
   end
 end
