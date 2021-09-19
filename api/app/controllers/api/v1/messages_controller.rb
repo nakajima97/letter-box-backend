@@ -1,8 +1,11 @@
 class Api::V1::MessagesController < ApplicationController
   def index
     employee_id_from_param = params[:employee_id]
+    store_id_from_param = params[:store_id]
     if employee_id_from_param
       messages = Message.where(employee_id: employee_id_from_param)
+    elsif store_id_from_param
+      messages = Message.where(store_id: store_id_from_param)
     else
       messages = Message.all
     end
@@ -23,9 +26,19 @@ class Api::V1::MessagesController < ApplicationController
     end
   end
 
+  def test
+    if current_store_auth
+      render json: { message: current_store_auth.store }
+    elsif current_employee_auth
+      render json: { message: current_employee_auth.employee }
+    else
+      render json: { type: "none" }
+    end
+  end
+
   private
 
-  def post_message_params
-    params.permit(:store_id, :employee_id, :message_text)
-  end
+    def post_message_params
+      params.permit(:store_id, :employee_id, :message_text)
+    end
 end

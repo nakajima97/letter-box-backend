@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       get 'messages', to: 'messages#index'
       post 'messages', to: 'messages#create'
       get 'check', to: 'log_in_state#check'
+      get 'check/user_id', to: 'log_in_state#login_user_id'
     end
   end
 end
